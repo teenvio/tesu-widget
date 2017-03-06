@@ -12,7 +12,7 @@ Word Press plugin that generate a widget to show a subscribe form
 
 == Description ==
 
-Simple WordPress plugin to create a bar/layer with a simple form to indicate the contact data to call: name, email and telephone.
+Simple WordPress plugin to generate a form so that your e-mail can be included in the list of newletters
 
 == Installation ==
 
