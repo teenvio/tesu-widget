@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tesu\n"
 "POT-Creation-Date: 2015-11-14 18:00+0100\n"
-"PO-Revision-Date: 2017-02-27 17:16+0100\n"
+"PO-Revision-Date: 2017-03-06 16:38+0100\n"
 "Last-Translator: teenvio <info@teenvio.com>\n"
 "Language-Team:  <info@teenvio.com>\n"
 "MIME-Version: 1.0\n"
@@ -63,3 +63,16 @@ msgstr "Send"
 
 msgid "configuracion"
 msgstr "Configuration Data"
+
+msgid "datosincorrectos"
+msgstr ""
+"Unabled to make conection. Check the fields data for your plan in Tools>>APIs"
+
+msgid "gid"
+msgstr "Group Id"
+
+msgid "gname"
+msgstr "Group Name"
+
+msgid "tesugroupdescription"
+msgstr "Automatic Group of the Wordpress's Widgets"

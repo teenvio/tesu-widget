@@ -50,7 +50,7 @@ function tesu_plugin_admin_init(){
 	add_settings_field('tesu_string_url_conuso',  __('urlcondiciones', 'tesu_i18n' ), 'tesu_plugin_setting_url_conuso', 'tesu_plugin', 'tesu_plugin_main');
 	
 	add_settings_field('tesu_string_gname',  __('gname', 'tesu_i18n' ), 'tesu_plugin_setting_gname', 'tesu_plugin', 'tesu_plugin_main');
-	add_settings_field('tesu_string_gid',  __('gid', 'tesu_i18n' ), 'tesu_plugin_setting_gid', 'tesu_plugin', 'tesu_plugin_main');
+	add_settings_field('tesu_string_gid',  '', 'tesu_plugin_setting_gid', 'tesu_plugin', 'tesu_plugin_main');
 
 }
 
@@ -60,19 +60,19 @@ function tesu_plugin_section_text() {
 
 function tesu_plugin_setting_user() {
 	$options = get_option('tesu_plugin_options');
-	echo "<input id='tesu_string_user' name='tesu_plugin_options[user]' size='40' type='text' 	value='{$options['user']}' /> <span> Obligatorio</span>";
+	echo "<input id='tesu_string_user' name='tesu_plugin_options[user]' size='40' type='text' 	value='{$options['user']}' /> <span>".__('obligatorio','tesu_i18n')."</span>";
 }
 function tesu_plugin_setting_plan() {
 	$options = get_option('tesu_plugin_options');
-	echo "<input id='tesu_string_plan' name='tesu_plugin_options[plan]' size='40' type='text' value='{$options['plan']}' /> <span> Obligatorio</span>";
+	echo "<input id='tesu_string_plan' name='tesu_plugin_options[plan]' size='40' type='text' value='{$options['plan']}' /> <span>".__('obligatorio','tesu_i18n')."</span>";
 }
 function tesu_plugin_setting_password() {
 	$options = get_option('tesu_plugin_options');
-	echo "<input id='tesu_string_pass' name='tesu_plugin_options[pass]' size='40' type='password' 	value='{$options['pass']}' /> <span> Obligatorio</span>";
+	echo "<input id='tesu_string_pass' name='tesu_plugin_options[pass]' size='40' type='password' 	value='{$options['pass']}' /> <span>".__('obligatorio','tesu_i18n')."</span>";
 }
 function tesu_plugin_setting_url_polpriv() {
 	$options = get_option('tesu_plugin_options');
-	echo "<input id='tesu_string_url_polpriv' name='tesu_plugin_options[url_polpriv]' size='40' type='text' value='{$options['url_polpriv']}' /> <span> Obligatorio</span>";
+	echo "<input id='tesu_string_url_polpriv' name='tesu_plugin_options[url_polpriv]' size='40' type='text' value='{$options['url_polpriv']}' /> <span>".__('obligatorio','tesu_i18n')."</span>";
 }
 function tesu_plugin_setting_url_conuso() {
 	$options = get_option('tesu_plugin_options');
