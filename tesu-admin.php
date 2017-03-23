@@ -5,17 +5,19 @@ require_once('tesu-widget.php');
 * Plugin URI: http://www.teenvio.com
 * Description: Genera un Widget para conectar con el sistema Teenvio
 * Text Domain: tesu_i18n
-* Version: 1.0.0
+* Version: 1.1.0
 * Author: Teenvio
 * Author URI: http://www.teenvio.com
 * License: GPL2
 */
 
-// add the admin options page
-
 add_action('admin_menu', 'tesu_plugin_admin_add_page');
 function tesu_plugin_admin_add_page() {
-	add_options_page('Teenvio Plugin', 'Teenvio', 'manage_options', 'tesu_plugin', 'tesu_plugin_options_page');
+	if ( empty ( $GLOBALS['admin_page_hooks']['teenvio_menu'] ) ){
+		add_menu_page('Teenvio', 'Teenvio', 'manage_options', 'teenvio_menu', 'teenvio_menu',plugins_url( 'images/teenvio_20x20.png', __FILE__ ));
+	}
+	add_submenu_page('teenvio_menu','', 'TeSu Plugin', 'manage_options', 'tesu_plugin', 'tesu_plugin_options_page');
+	remove_submenu_page('teenvio_menu','teenvio_menu');
 }
 
 function tesu_plugin_options_page(){
@@ -57,7 +59,7 @@ function tesu_plugin_admin_init(){
 }
 
 function tesu_plugin_section_text() {
-	//echo '<p>Valor = '.var_dump(get_option('tesu_plugin_options')).'</p>';
+	//echo null;
 }
 
 function tesu_plugin_setting_user() {
@@ -114,7 +116,7 @@ function tesu_plugin_options_validate($input) {
 	}
 	if(empty($input['gname']))
 		$input['gname']="Formulario de Wordpress";
-	//if(empty($input['gid'])
+
 	$input['gid'] = $api->saveGroup($input['gname'],__('tesugroupdescription','tesu_i18n'),$input['gid']);
 	
 	
