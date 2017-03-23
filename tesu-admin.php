@@ -23,13 +23,15 @@ function tesu_plugin_options_page(){
 	$tpl = file_get_contents(plugins_url( 'tpl/tesu-admin.tpl', __FILE__ ));
 	$tpl = str_replace('__#configuracion#__', __('configuracion', 'tesu_i18n' ),$tpl);
 	echo $tpl; 
+	
+	
 ?>	
 <div class="tesu-body">
 	<form action="options.php" method="post">
 		<?php settings_fields('tesu_plugin_options'); ?>
 		<?php do_settings_sections('tesu_plugin'); ?>
 		 
-		<input name="Submit" type="submit" value="<?php esc_attr_e('Save Changes'); ?>" />
+		<input name="Submit" type="submit" value="<?php esc_attr_e('Save Changes'); ?>" /><?php echo "<span>".__('si no dispone de cuenta puede crear una', 'tesu_i18n' )." <a href='".__('enlace alta','tesu_i18n')."' target='_blank'> ".__('aqui','tesu_i18n')."</a></span>"; ?>
 	</form>
 </div>
 <?php

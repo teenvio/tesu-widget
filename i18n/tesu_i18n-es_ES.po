@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: we-will-call-you\n"
 "POT-Creation-Date: 2015-11-14 18:00+0100\n"
-"PO-Revision-Date: 2017-03-06 17:00+0100\n"
+"PO-Revision-Date: 2017-03-21 17:00+0100\n"
 "Last-Translator: teenvio <info@teenvio.com>\n"
 "Language-Team:  <info@teenvio.com>\n"
 "MIME-Version: 1.0\n"
@@ -82,3 +82,12 @@ msgstr "Grupo automático del Widget para Wordpress"
 
 msgid "gracias"
 msgstr "Gracias por suscribirte a nuestra Newletter"
+
+msgid "si no dispone de cuenta puede crear una"
+msgstr "Si usted no dispone de una cuenta, puede dar una de alta"
+
+msgid "aqui"
+msgstr "aquí"
+
+msgid "enlace alta"
+msgstr "https://master2.teenvio.com/v4/public/alta/"

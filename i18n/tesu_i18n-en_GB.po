@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tesu\n"
 "POT-Creation-Date: 2015-11-14 18:00+0100\n"
-"PO-Revision-Date: 2017-03-06 16:59+0100\n"
+"PO-Revision-Date: 2017-03-21 17:00+0100\n"
 "Last-Translator: teenvio <info@teenvio.com>\n"
 "Language-Team:  <info@teenvio.com>\n"
 "MIME-Version: 1.0\n"
@@ -79,3 +79,12 @@ msgstr "Automatic Group of the Wordpress's Widgets"
 
 msgid "gracias"
 msgstr "Thanks for suscribe to our Newletter"
+
+msgid "si no dispone de cuenta puede crear una"
+msgstr "If you don`t have an account, you can register"
+
+msgid "aqui"
+msgstr "here"
+
+msgid "enlace alta"
+msgstr "https://master2.teenvio.com/v4/public/alta/??lang=en_GB"

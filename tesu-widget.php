@@ -93,7 +93,10 @@ function tesu_ajax_save(){
 		$options = get_option('tesu_plugin_options');
 		$api=new Teenvio\APIClientPOST($options['user'],$options['plan'],$options['pass']);
 		$id= $api->saveContact($data);
-		$retorno = $api->groupContact($data['email'],$options['gid']);
+		$jsondata = $api->getGroupData($options['gid']);
+		$gdata = json_decode($jsondata);
+		$gid = $api->saveGroup($gdata->name,$gdata->description,$gdata->id);
+		$retorno = $api->groupContact($data['email'],$gid);
 	}else{
 		$retorno="Error";
 	}
