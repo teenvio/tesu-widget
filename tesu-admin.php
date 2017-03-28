@@ -5,7 +5,7 @@ require_once('tesu-widget.php');
 * Plugin URI: http://www.teenvio.com
 * Description: Genera un Widget para conectar con el sistema Teenvio
 * Text Domain: tesu_i18n
-* Version: 1.1.0
+* Version: 1.1.1
 * Author: Teenvio
 * Author URI: http://www.teenvio.com
 * License: GPL2
@@ -25,8 +25,6 @@ function tesu_plugin_options_page(){
 	$tpl = file_get_contents(plugins_url( 'tpl/tesu-admin.tpl', __FILE__ ));
 	$tpl = str_replace('__#configuracion#__', __('configuracion', 'tesu_i18n' ),$tpl);
 	echo $tpl; 
-	
-	
 ?>	
 <div class="tesu-body">
 	<form action="options.php" method="post">
@@ -64,19 +62,19 @@ function tesu_plugin_section_text() {
 
 function tesu_plugin_setting_user() {
 	$options = get_option('tesu_plugin_options');
-	echo "<input id='tesu_string_user' name='tesu_plugin_options[user]' size='40' type='text' 	value='{$options['user']}' /> <span>".__('obligatorio','tesu_i18n')."</span>";
+	echo "<input id='tesu_string_user' class='form-required' name='tesu_plugin_options[user]' size='40' type='text' 	value='{$options['user']}' /> <span>".__('obligatorio','tesu_i18n')."</span>";
 }
 function tesu_plugin_setting_plan() {
 	$options = get_option('tesu_plugin_options');
-	echo "<input id='tesu_string_plan' name='tesu_plugin_options[plan]' size='40' type='text' value='{$options['plan']}' /> <span>".__('obligatorio','tesu_i18n')."</span>";
+	echo "<input id='tesu_string_plan' class='form-required' name='tesu_plugin_options[plan]' size='40' type='text' value='{$options['plan']}' /> <span>".__('obligatorio','tesu_i18n')."</span>";
 }
 function tesu_plugin_setting_password() {
 	$options = get_option('tesu_plugin_options');
-	echo "<input id='tesu_string_pass' name='tesu_plugin_options[pass]' size='40' type='password' 	value='{$options['pass']}' /> <span>".__('obligatorio','tesu_i18n')."</span>";
+	echo "<input id='tesu_string_pass' class='form-required' name='tesu_plugin_options[pass]' size='40' type='password' 	value='{$options['pass']}' /> <span>".__('obligatorio','tesu_i18n')."</span>";
 }
 function tesu_plugin_setting_url_polpriv() {
 	$options = get_option('tesu_plugin_options');
-	echo "<input id='tesu_string_url_polpriv' name='tesu_plugin_options[url_polpriv]' size='40' type='text' value='{$options['url_polpriv']}' /> <span>".__('obligatorio','tesu_i18n')."</span>";
+	echo "<input id='tesu_string_url_polpriv' class='form-required'  name='tesu_plugin_options[url_polpriv]' size='40' type='text' value='{$options['url_polpriv']}' /> <span>".__('obligatorio','tesu_i18n')."</span>";
 }
 function tesu_plugin_setting_url_conuso() {
 	$options = get_option('tesu_plugin_options');
@@ -91,7 +89,7 @@ function tesu_plugin_setting_gid() {
 	echo "<input id='tesu_string_gid' name='tesu_plugin_options[gid]' size='40' type='hidden' value='{$options['gid']}' />";
 }
 
-function tesu_plugin_options_validate($input) {
+function tesu_plugin_options_validate($input){	
 	$error=false;
 	
 	$mandatory=array('user','plan','pass','url_polpriv');
@@ -106,21 +104,21 @@ function tesu_plugin_options_validate($input) {
 	}		
 	
 	if($error==true){
-		add_settings_error('tesu_admin_error',esc_attr( 'settings_updated' ),$message,$type);
+		add_action( 'admin_notices', 'tesu_error_datos_vacios' );
+	}else{
+		require_once 'class/APIClientPOST.php';
+		$api=new Teenvio\APIClientPOST($input['user'],$input['plan'],$input['pass']);
+		if(!$api->ping()){
+			add_action( 'admin_notices', 'tesu_error_connection' );
+		}else{
+			if(empty($input['gname']))
+				$input['gname']="Formulario de Wordpress";
+		
+			$input['gid'] = $api->saveGroup($input['gname'],__('tesugroupdescription','tesu_i18n'),$input['gid']);
+		}
 	}
 	
-	require_once 'class/APIClientPOST.php';
-	$api=new Teenvio\APIClientPOST($input['user'],$input['plan'],$input['pass']);
-	if(!$api->ping()){
-		add_settings_error('tesu_admin_error',esc_attr( 'settings_updated' ),__('datosincorrectos','tesu_i18n'),'error');
-	}
-	if(empty($input['gname']))
-		$input['gname']="Formulario de Wordpress";
-
-	$input['gid'] = $api->saveGroup($input['gname'],__('tesugroupdescription','tesu_i18n'),$input['gid']);
-	
-	
-	return $input;
+	return $input;	
 }
 
 function tesu_error_connection() {
@@ -131,13 +129,26 @@ function tesu_error_connection() {
     <?php
 }
 
+
+
 $options = get_option('tesu_plugin_options');
-if(!isset($options)){
+$vacio = false;
+$mandatory=array('user','plan','pass','url_polpriv');
+foreach($options as $key=>$value){
+	$options_name = trim($key);
+	if(empty($value) && in_array($options_name,$mandatory)) {
+		$vacio=true;
+	}
+}		
+	
+if($vacio==true){
 	add_action( 'admin_notices', 'tesu_error_connection' );
 }else{
+
 	require_once 'class/APIClientPOST.php';
 	$api=new Teenvio\APIClientPOST($options['user'],$options['plan'],$options['pass']);
 	if(!$api->ping()){
 		add_action( 'admin_notices', 'tesu_error_connection' );
 	}
+
 }
