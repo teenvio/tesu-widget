@@ -21,7 +21,7 @@ class tesu_widget extends WP_Widget {
 			echo "\n<!-- Teenvio Submit Form -->\n";
 			tesu_add_scripts();
 			
-			$tpl = file_get_contents(plugins_url( 'tpl/tesu-form.tpl', __FILE__ ));
+			$tpl = file_get_contents(plugin_dir_path(__FILE__).'tpl/tesu-form.tpl');
 			
 			$tpl = str_replace('__#loading#__', __('loading', 'tesu_i18n' ),$tpl);	
 			$tpl = str_replace('__#email#__', __('email', 'tesu_i18n' ),$tpl);

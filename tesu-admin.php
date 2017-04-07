@@ -22,7 +22,7 @@ function tesu_plugin_admin_add_page() {
 
 function tesu_plugin_options_page(){
 	echo "\n<!-- Teenvio Submit Admin -->\n";
-	$tpl = file_get_contents(plugins_url( 'tpl/tesu-admin.tpl', __FILE__ ));
+	$tpl = file_get_contents(plugin_dir_path(__FILE__). 'tpl/tesu-admin.tpl');
 	$tpl = str_replace('__#configuracion#__', __('configuracion', 'tesu_i18n' ),$tpl);
 	echo $tpl; 
 ?>	
@@ -133,6 +133,9 @@ function tesu_error_connection() {
 
 $options = get_option('tesu_plugin_options');
 $vacio = false;
+if(empty($options)){
+  $vacio=true;
+}else{
 $mandatory=array('user','plan','pass','url_polpriv');
 foreach($options as $key=>$value){
 	$options_name = trim($key);
@@ -140,7 +143,7 @@ foreach($options as $key=>$value){
 		$vacio=true;
 	}
 }		
-	
+}	
 if($vacio==true){
 	add_action( 'admin_notices', 'tesu_error_connection' );
 }else{
@@ -151,4 +154,12 @@ if($vacio==true){
 		add_action( 'admin_notices', 'tesu_error_connection' );
 	}
 
+}
+
+register_activation_hook( __FILE__, 'tesu_plugin_activate' );
+function tesu_plugin_activate(){
+    register_uninstall_hook( __FILE__, 'tesu_plugin_uninstall' );
+}
+function tesu_plugin_uninstall(){
+   delete_option('tesu_plugin_options');
 }
