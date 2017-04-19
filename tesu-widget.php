@@ -81,7 +81,7 @@ function tesu_load_widget() {
 }
 
 function tesu_add_scripts(){
-	wp_register_script( 'tesu_script',plugins_url( '/tesu.js', __FILE__ ), array( 'jquery' ) );
+	wp_register_script( 'tesu_script',plugins_url( '/js/tesu.js', __FILE__ ), array( 'jquery' ) );
 	wp_enqueue_script( 'tesu_script' );
 	wp_localize_script( 'tesu_script', 'tesuAjax', array( 'url' => admin_url( 'admin-ajax.php')));
 }
