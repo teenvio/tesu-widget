@@ -20,7 +20,7 @@ function tesu_plugin_admin_add_page() {
 }
 
 function tesu_plugin_options_page(){
-	wp_enqueue_script( 'script', plugins_url('/js/jquery.form-validator.min.js', __FILE__),array ( 'jquery' ), 2.3.26, true);
+	wp_enqueue_script( 'script', plugins_url('/js/jquery.form-validator.min.js', __FILE__),array ( 'jquery' ));
 	echo "\n<!-- Teenvio Submit Admin -->\n";
 	$tpl = file_get_contents(plugin_dir_path(__FILE__). 'tpl/tesu-admin.tpl');
 	$tpl = str_replace('__#configuracion#__', __('configuracion', 'tesu_i18n' ),$tpl);
