@@ -12,7 +12,7 @@
 }
 
 .tesu-head-content {
-    background: rgba(0, 0, 0, 0) url("https://secure.teenvio.com/es/wp-content/uploads/2013/07/email-marketing-teenvio-logo1.png") no-repeat scroll 0 0;
+    background: rgba(0, 0, 0, 0) url(__#logo_head#__) no-repeat scroll 0 0;
     height: 44px;
     width: 100%;
 }

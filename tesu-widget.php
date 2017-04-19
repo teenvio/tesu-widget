@@ -1,7 +1,7 @@
 <?php
 
 class tesu_widget extends WP_Widget {
-	
+
 	function __construct() {
 		parent::__construct('tesu_widget',__('Teenvio Widget', 'tesu_widget_domain'),array( 'description' => __( 'descriptionwidget', 'tesu_i18n' ), ) 
 		);
@@ -22,7 +22,7 @@ class tesu_widget extends WP_Widget {
 			tesu_add_scripts();
 			
 			$tpl = file_get_contents(plugin_dir_path(__FILE__).'tpl/tesu-form.tpl');
-			
+			$tpl = str_replace('__#urlloading#__',plugins_url('/images/loading.gif', __FILE__ ),$tpl);
 			$tpl = str_replace('__#loading#__', __('loading', 'tesu_i18n' ),$tpl);	
 			$tpl = str_replace('__#email#__', __('email', 'tesu_i18n' ),$tpl);
 			$tpl = str_replace('__#acepto#__', __('acepto', 'tesu_i18n' ),$tpl);
@@ -32,14 +32,14 @@ class tesu_widget extends WP_Widget {
 			$tpl = str_replace('__#enviar#__', __('enviar', 'tesu_i18n' ),$tpl);
 			$tpl = str_replace('__#gracias#__', __('gracias', 'tesu_i18n' ),$tpl);
 					
-			$tpl = str_replace('__#url_polpriv#__', "http://".$options['url_polpriv'],$tpl);
+			$tpl = str_replace('__#url_polpriv#__', $options['url_polpriv'],$tpl);
 			if(!empty($options['url_conuso'])){
-				$tpl = str_replace('__#url_conuso#__', "http://" . $options['url_conuso'],$tpl);	
+				$tpl = str_replace('__#url_conuso#__', $options['url_conuso'],$tpl);	
 			}else{
 				$tpl = str_replace('__#url_conuso#__', " ",$tpl);	
 				$tpl = str_replace('__#hide_conuso#__', "display:none;",$tpl);	
 			}
-	//
+			$setWidget='';
 			$dataplan=$api->getAcountData('JSON');
 			if(strstr($dataplan,'gratuito')){$setWidget= "Powered by <a href='http://teenvio.com' target='_blank'> teenvio </a>";}
 			$tpl = str_replace('__#tesu#__', $setWidget,$tpl);
@@ -75,12 +75,13 @@ class tesu_widget extends WP_Widget {
 	
 }
 
+
 function tesu_load_widget() {
 	register_widget( 'tesu_widget' );
 }
 
 function tesu_add_scripts(){
-	wp_register_script( 'tesu_script', plugins_url( '/tesu.js', __FILE__ ), array( 'jquery' ) );	
+	wp_register_script( 'tesu_script',plugins_url( '/tesu.js', __FILE__ ), array( 'jquery' ) );
 	wp_enqueue_script( 'tesu_script' );
 	wp_localize_script( 'tesu_script', 'tesuAjax', array( 'url' => admin_url( 'admin-ajax.php')));
 }

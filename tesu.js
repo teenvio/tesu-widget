@@ -1,42 +1,57 @@
 var tesu={
 	init:function(){
-		jQuery('#tesu-button').click(function(){
+		jQuery('.tesu-button').on('click',function(){
+			var tesumain = jQuery(this).closest('div.tesu-main');
+			tesumain.find('> form > .tesu-loading').fadeIn();
+			tesumain.find('> form > .tesu-error').removeClass('tesu-error');
+			// > .div_tesu-mail');
+			//var con = tesumain.find('> form > .div_tesu-con');
+			/*
 			jQuery('.tesu-error').removeClass('tesu-error');
 			jQuery("#tesu-loading").fadeIn();
-			tesu.launch();
+			*/
+			tesu.launch(tesumain);
+			
 		});
 	},
-	launch:function(){
+	launch:function(tesumain){
 		var error=0;
-		var correo = jQuery("#tesu-email");
-		var condiciones=jQuery("#tesu-con");
+		var form = tesumain.find('> form');
+		var divcorreo = form.find('> .div_tesu-email');
+		var correo = divcorreo.find('> .tesu-email');
+		var divcon = form.find('> .div_tesu-con');
+		var condiciones=divcon.find(" > .tesu-con");
 		
 		if ( correo.val().length == 0){
-			jQuery(".tesu-email").addClass('tesu-error');
+			divcorreo.addClass('tesu-error');
 			error=1;
 		}else if ( correo.val().trim().match(/^[\w-_.]{1,}@[\w-_.]{1,}(\.\w{2,})+$/)==null){
-			jQuery(".tesu-email").addClass('tesu-error');
+			divcorreo.addClass('tesu-error');
 			error=1;
 		}
 		
 		if(!condiciones.is(':checked')){
-			jQuery(".tesu-con").addClass('tesu-error');
+			divcon.addClass('tesu-error');
 			error=1;
 		}
 		
 		if (error<=0){
-			var form=jQuery('div#tesu-main form');
+		//	var form=jQuery('div#tesu-main form');
 			var data=form.serialize();
 
 			jQuery.post(tesuAjax.url, data, function(response) {
+			    form.find('> .tesu-loading').fadeOut();
+				
 				if(response!="Error"){
-					jQuery('#tesu-main').fadeOut();
-					jQuery('#tesu-msg').fadeIn();
+					form.fadeOut();
+					tesumain.find('> .tesu-msg').fadeIn();
 				}
 				
 			});	
+		}else{
+				form.find('> .tesu-loading').fadeOut();
 		}
-		jQuery("#tesu-loading").fadeOut();
+		
 	}
 };
 

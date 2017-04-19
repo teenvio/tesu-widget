@@ -25,6 +25,13 @@ Simple WordPress plugin to generate a form so that your e-mail can be included i
 = 1.0 =
 * First version
 
+= 1.1.1 =
+* Check of mandatory fields
+* Error alerts in admin zone
+
+= 1.1.2 =
+* Check and warning if the server don't have the "allow_url_fopen" option or the cURL library
+
 == Screenshots ==
 
 1. Layer form contact (shown)
