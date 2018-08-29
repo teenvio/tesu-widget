@@ -2,9 +2,9 @@
 Contributors: DavidMorenoIsidro
 Donate link:
 Tags: email, forms, suscribe
-Requires at least: 3.0.1
-Tested up to: 3.4
-Stable tag: 1.1.2
+Requires at least: 4.9.6
+Tested up to: 4.9.8
+Stable tag: 2.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,7 +12,7 @@ Word Press plugin that generate a widget to show a subscribe form
 
 == Description ==
 
-Simple WordPress plugin to generate a form so that your e-mail can be included in the list of newletters
+Second (and more complete) version of WordPress plugin to generate a form so that your e-mail can be included in the list of newletters
 
 == Installation ==
 
@@ -22,15 +22,8 @@ Simple WordPress plugin to generate a form so that your e-mail can be included i
 
 == Changelog ==
 
-= 1.0 =
-* First version
-
-= 1.1.1 =
-* Check of mandatory fields
-* Error alerts in admin zone
-
-= 1.1.2 =
-* Check and warning if the server don't have the "allow_url_fopen" option or the cURL library
+= 2.1 =
+* First update
 
 == Screenshots ==
 

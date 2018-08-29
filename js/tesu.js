@@ -3,13 +3,8 @@ var tesu={
 		jQuery('.tesu-button').on('click',function(){
 			var tesumain = jQuery(this).closest('div.tesu-main');
 			tesumain.find('> form > .tesu-loading').fadeIn();
-			tesumain.find('> form > .tesu-error').removeClass('tesu-error');
-			// > .div_tesu-mail');
-			//var con = tesumain.find('> form > .div_tesu-con');
-			/*
-			jQuery('.tesu-error').removeClass('tesu-error');
-			jQuery("#tesu-loading").fadeIn();
-			*/
+			tesumain.find('> form .tesu-error').removeClass('tesu-error');
+            
 			tesu.launch(tesumain);
 			
 		});
@@ -17,29 +12,31 @@ var tesu={
 	launch:function(tesumain){
 		var error=0;
 		var form = tesumain.find('> form');
-		var divcorreo = form.find('> .div_tesu-email');
-		var correo = divcorreo.find('> .tesu-email');
-		var divcon = form.find('> .div_tesu-con');
-		var condiciones=divcon.find(" > .tesu-con");
-		
-		if ( correo.val().length == 0){
-			divcorreo.addClass('tesu-error');
-			error=1;
-		}else if ( correo.val().trim().match(/^[\w-_.]{1,}@[\w-_.]{1,}(\.\w{2,})+$/)==null){
-			divcorreo.addClass('tesu-error');
-			error=1;
-		}
-		
-		if(!condiciones.is(':checked')){
-			divcon.addClass('tesu-error');
-			error=1;
-		}
-		
-		if (error<=0){
-		//	var form=jQuery('div#tesu-main form');
-			var data=form.serialize();
+		var mandatoryfields = form.find('input.required');
 
-			jQuery.post(tesuAjax.url, data, function(response) {
+        mandatoryfields.each(function(index, obj){
+            var fieldtype = jQuery(this).attr('type');
+            switch(fieldtype){
+                case 'checkbox':
+                    if(!jQuery(this).prop('checked')){
+                        jQuery(this).parent().addClass('tesu-error');
+                        error=1; 
+                    }
+                    break;
+                default:
+                    if(jQuery(this).val().length === 0){
+                        jQuery(this).parent().addClass('tesu-error');
+                        error=1;
+                    }
+            }
+        });
+		
+		if(error!==0){
+		    form.find('> .tesu-loading').fadeOut();
+		}else{
+		    var fields = form.serialize();
+            jQuery.post(tesuAjax.url, fields, function(response) {
+			    
 			    form.find('> .tesu-loading').fadeOut();
 				
 				if(response!="Error"){
@@ -48,10 +45,7 @@ var tesu={
 				}
 				
 			});	
-		}else{
-				form.find('> .tesu-loading').fadeOut();
 		}
-		
 	}
 };
 

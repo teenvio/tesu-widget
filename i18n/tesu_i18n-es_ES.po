@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: we-will-call-you\n"
 "POT-Creation-Date: 2015-11-14 18:00+0100\n"
-"PO-Revision-Date: 2017-04-17 16:41+0100\n"
+"PO-Revision-Date: 2018-08-14 14:37+0100\n"
 "Last-Translator: teenvio <info@teenvio.com>\n"
 "Language-Team:  <info@teenvio.com>\n"
 "MIME-Version: 1.0\n"
@@ -16,84 +16,209 @@ msgstr ""
 "Language: es_ES\n"
 "X-Poedit-SearchPath-0: ..\n"
 
+msgid "configuracion"
+msgstr "Datos de Configuración"
+
+msgid "acceso"
+msgstr "Acceso"
+
+msgid "privacidad"
+msgstr "Privacidad"
+
+msgid "campos"
+msgstr "Campos"
+
+msgid "grupo"
+msgstr "Grupo"
+
+msgid "complete las tareas"
+msgstr "Tiene tareas pendientes"
+
+msgid "todo completo"
+msgstr "Todo Completo"
+
+msgid "texto acceso"
+msgstr ""
+"Introduzca el ususario y la contraseña de su cuenta de Teenvio.<br>Si no "
+"dispone de una cuenta, puede darse de alta haciendo click <a href='https://"
+"master4.teenvio.com/v4/public/alta/'>aquí</a>"
+
 msgid "name"
-msgstr "Nombre de usuario"
+msgstr "Usuario"
 
 msgid "pass"
 msgstr "Contraseña"
 
-msgid "plan"
-msgstr "Plan"
+msgid "acceder"
+msgstr "Acceder"
+
+msgid "guardar"
+msgstr "Guardar"
+
+msgid "actualizar"
+msgstr "Actualizar"
+
+msgid "limpiar cuenta"
+msgstr "Limpiar Cuenta"
+
+msgid "esto limpiara todos los campos"
+msgstr ""
+"Si continua, se borrará la configuración de este Plugin.</br>Desea continuar?"
+
+msgid "cancelar"
+msgstr "No"
+
+msgid "campo obligatorio"
+msgstr "El campo es obligatorio"
+
+msgid "usuario no valido"
+msgstr "El nombre de Usuario no es válido"
+
+msgid "usuario o contraseña no validos"
+msgstr "Usuario o Contraseña no validos"
+
+msgid "texto advanced"
+msgstr ""
+"Aquí tenemos que poner el texto para los distintos enlaces a políticas de "
+"privacidad, condiciones de uso o aviso legal"
+
+msgid "exurl"
+msgstr "http://midireccion.es"
 
 msgid "urlpoliticas"
-msgstr "URL de las Políticas de privacidad"
+msgstr "Políticas de Privacidad"
 
 msgid "urlcondiciones"
-msgstr "URL de Condiciones de uso"
+msgstr "Condiciones de uso"
 
-msgid "oligatorio"
-msgstr "Campos obligatorios"
+msgid "urlavisolegal"
+msgstr "Aviso Legal"
 
-msgid "completeobligatorios"
-msgstr "Complete los datos obligatorios"
+msgid "la url no es valida"
+msgstr "La URL introducida no es válida"
 
-msgid "descriptionwidget"
+msgid "texto campos"
 msgstr ""
-"Widget para incluir un formulario de inscripción de forma sencilla en "
-"Wordpress"
+"Arrastre los campos disponibles a la sección de campos del formulario para "
+"incluirlos en la vista que se presentará al usuario.</br>El eMail es el "
+"único campo obligatorio e imprescindible para el sistema."
 
-msgid "loading"
-msgstr "Cargando"
+msgid "campos disponibles"
+msgstr "Campos Disponibles"
+
+msgid "campos del formulario"
+msgstr "Campos del Formulario"
 
 msgid "email"
 msgstr "Email"
 
-msgid "acepto"
-msgstr "Acepto las "
+msgid "nombre"
+msgstr "Nombre"
 
-msgid "politicas"
-msgstr "Políticas de privacidad"
+msgid "apellidos"
+msgstr "Apellidos"
 
-msgid "ylas"
-msgstr " y las "
+msgid "observaciones"
+msgstr "Observaciones"
 
-msgid "condiciones"
-msgstr "Condiciones de uso"
+msgid "empresa"
+msgstr "Empresa"
 
-msgid "enviar"
-msgstr "Enviar"
+msgid "edireccion"
+msgstr "Dirección de la Empresa"
 
-msgid "configuracion"
-msgstr "Datos de Configuración"
+msgid "ecpostal"
+msgstr "Codigo Postal de la Empresa"
 
-msgid "datosincorrectos"
+msgid "eciudad"
+msgstr "Ciudad de la Empresa"
+
+msgid "eprovincia"
+msgstr "Provincia de la Empresa"
+
+msgid "epais"
+msgstr "Pais de la Empresa"
+
+msgid "teltrabajo"
+msgstr "Teléfono del trabajo"
+
+msgid "moviltrabajo"
+msgstr "Movil del trabajo"
+
+msgid "direccion"
+msgstr "Dirección"
+
+msgid "cpostal"
+msgstr "Código Postal"
+
+msgid "ciudad"
+msgstr "Ciudad"
+
+msgid "provincia"
+msgstr "Provincia"
+
+msgid "telperso"
+msgstr "Teléfono Personal"
+
+msgid "movilperso"
+msgstr "Movil Personal"
+
+msgid "cumple"
+msgstr "Fecha nacimiento"
+
+msgid "obligatorio"
+msgstr "Obligatorio"
+
+msgid "texto grupos"
 msgstr ""
-"No se ha podido realizar una conexión. Revise los datos necesarios de su "
-"plan en la seccion Herramientas>>APIs"
+"Al usar este formulario, los usuarios se registrarán en su plan de teenvio, "
+"pero para ello se necesita un grupo para quedar organizados. </br>Este grupo "
+"puede ser uno nuevo o uno que ya existiese en su sistema."
 
-msgid "gid"
-msgstr "Id de grupo"
+msgid "grupo existente"
+msgstr "Grupo Existente"
 
-msgid "gname"
-msgstr "Nombre para el grupo"
+msgid "selecciona grupo"
+msgstr "Seleccione un grupo"
 
-msgid "tesugroupdescription"
-msgstr "Grupo automático del Widget para Wordpress"
+msgid "seleccione"
+msgstr "Seleccione"
 
-msgid "gracias"
-msgstr "Gracias por suscribirte a nuestra Newletter"
+msgid "nuevo grupo"
+msgstr "Nuevo Grupo"
 
-msgid "si no dispone de cuenta puede crear una"
-msgstr "Si usted no dispone de una cuenta, puede dar una de alta"
+msgid "descripcion"
+msgstr "Descripción"
 
-msgid "aqui"
-msgstr "aquí"
+msgid "destino grupos"
+msgstr "Los contactos se agruparán en: "
 
-msgid "enlace alta"
-msgstr "https://master2.teenvio.com/v4/public/alta/"
+msgid "descriptionwidget"
+msgstr "Widget para el plugin TeSu "
 
-msgid "error limit php"
+msgid "polpriv"
+msgstr "Acepto las Políticas de Privacidad"
+
+msgid "conuso"
+msgstr "Acepto las Condiciones de uso"
+
+msgid "avisolegal"
+msgstr "Acepto el Aviso Legal"
+
+msgid "error - KO: 222"
+msgstr "Usuario y/o contraseña no válidos"
+
+msgid "error - KO: 403"
 msgstr ""
-"Para poder funcionar correctamente, el plugin requiere que la opción "
-"<strong>allow_url_fopen</strong> en las opciones de su PHP esté activada, o "
-"tener instalado en su servidor cURL"
+"El usuario introducido no posee permisos de API. Contacte con el "
+"administrador de su plan para actualizar sus permisos"
+
+msgid "error - KO: 501"
+msgstr ""
+"El usuario introducido no posee permisos sobre Contactos. Contacte con el "
+"administrador de su plan para actualizar sus permisos"
+
+msgid "txtfinalidad"
+msgstr ""
+"Aquí puede introducir un texto explicativo referente a las finalidades del "
+"formulario"

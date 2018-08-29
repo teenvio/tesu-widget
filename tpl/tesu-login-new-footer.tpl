@@ -1,0 +1,2 @@
+<input id="submitlogin" class="g1-button" name="Submit" type="submit" value="__#acceder#__" />
+<a href="https://teenvio.com/v4/public/alta/recordar.php" target="_blank" class="btn g1-button btn-recuperar btn-ligth">__#recuperardatos#__</a>

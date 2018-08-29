@@ -3,17 +3,20 @@
 		<div class="tesu-loading">
 			<img class="tesu-loading-image" src="__#urlloading#__" alt="__#loading#__..." />
 		</div>
-		<div class="div_tesu-email">
-			<label for="tesu-email" class="control-label">__#email#__</label>
-			<input class="tesu-email" name="tesu-email" value="" type="text">
+	    __#fields#__
+	    <div class="form-group">
+	        <div class="col-sm-12">
+			   <!-- <input name="tesu-con" class="required tesu-con" type="checkbox"><a href="__#url_polpriv#__" target="_blank"> __#politicas#__ </a>
+			    <span style="__#hide_conuso#__"> __#ylas#__ <a href="__#url_conuso#__" target="_blank"> __#condiciones#__ </a> </span>-->
+			</div>
 		</div>
-		<div class="div_tesu-con">
-			<input name="tesu-con" class="obligatorio tesu-con" type="checkbox"> __#acepto#__ <a href="__#url_polpriv#__" target="_blank"> __#politicas#__ </a><span style="__#hide_conuso#__"> __#ylas#__ <a href="__#url_conuso#__" target="_blank"> __#condiciones#__ </a> </span>
+	    <div class="form-group">
+	        <div class="col-sm-12">
+		        <input type="hidden" name="action" value="tesu_ajax_save"/>
+		    	<button type="submit" class="tesu-button" class="btn btn-large btn-success">Enviar</button>
+		        <span class="credit-link" style="float:right;">__#tesu#__</span>
+		    </div>
 		</div>
-		<input type="hidden" name="action" value="tesu_ajax_save"/>
-		<br/>
-		<button type="submit" class="tesu-button" class="btn btn-large btn-success">Enviar</button>
-		<span class="credit-link" style="float:right;">__#tesu#__</span>
 	</form>
 	<div class="tesu-msg">__#gracias#__</div>
 </div>

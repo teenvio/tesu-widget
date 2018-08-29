@@ -66,7 +66,7 @@ class APIClientPOST{
 	 * @var string
 	 */
 	private $urlBase="https://central1.teenvio.com/v4/public/api/post/";
-	
+		
 	/**
 	 * URL API Post
 	 * @var string
@@ -100,7 +100,7 @@ class APIClientPOST{
 		$this->plan=$plan;
 		$this->pass=$pass;
 		
-		if (!$this->ping()){
+		if (!$this->getServerVersion()){
 			throw new TeenvioException($this->lastResponse);
 		}
 		
@@ -168,6 +168,67 @@ class APIClientPOST{
 	}
 	
 	/**
+	 * Check the current connection.
+	 * If this method returns false any setup fails.
+	 * 
+	 * @return boolean
+	 */
+	public function isValidUser(){
+	    return $this->getServerVersion();
+/*
+		$data=array();
+		$data['action']='get_user_data';
+		$data['plan']=$this->plan;
+		$data['user']=$this->user;
+		$data['pass']=$this->pass;
+		$data['mode']=self::OUTPUT_MODE_JSON;
+		
+		$bruto=$this->getResponse($data);
+
+		if (substr($bruto,0,2)=="OK"){
+		    $iniJSON = strpos($bruto,'{');
+		    $brutoJSON = substr($bruto,$iniJSON);
+            $userData = json_decode($brutoJSON,true);
+$this->lastResponse = $userData; return false;
+            switch (json_last_error()) {
+                case JSON_ERROR_NONE:
+                    $this->lastResponse = ' - No errors';
+                break;
+                case JSON_ERROR_DEPTH:
+                    $this->lastResponse = ' - Maximum stack depth exceeded';
+                break;
+                case JSON_ERROR_STATE_MISMATCH:
+                    $this->lastResponse = ' - Underflow or the modes mismatch';
+                break;
+                case JSON_ERROR_CTRL_CHAR:
+                    $this->lastResponse = ' - Unexpected control character found';
+                break;
+                case JSON_ERROR_SYNTAX:
+                    $this->lastResponse = ' - Syntax error, malformed JSON';
+                break;
+                case JSON_ERROR_UTF8:
+                    $this->lastResponse = ' - Malformed UTF-8 characters, possibly incorrectly encoded';
+                break;
+                default:
+                    $this->lastResponse = ' - Unknown error';
+                break;
+            }
+                   
+            if(in_array("contactos",$userData["roles"])){
+                return true;
+            }else{
+                $this->lastResponse = "501 - " .$bruto ;
+            }
+		}else{
+		    $this->lastResponse = substr($bruto,4,3);    
+		}
+		
+		//throw new TeenvioException($this->lastResponse);
+		return false;
+*/
+	}
+	
+	/**
 	 * Save a contact. For all keys names check the pdf document
 	 * @param array $data Asociative array
 	 * @return int
@@ -178,7 +239,7 @@ class APIClientPOST{
 		
 		if (!is_array($data)){throw new TeenvioException('Input data for saveContact is not asociative array');}
 		
-		$data['action']='contact_save';
+		$data['action']='contact_save';   
 		$data['plan']=$this->plan;
 		$data['user']=$this->user;
 		$data['pass']=$this->pass;
